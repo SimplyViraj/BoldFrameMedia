@@ -3,15 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
 import MobileMenu from './MobileMenu';
-
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Features', href: '/features' },
-  { name: 'Services', href: '/services' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/about' },
-];
-
+import { navItems } from '../constants';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('up');
@@ -82,13 +74,13 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-white text-lg font-medium transition-colors duration-200 hover:text-rose-500"
+                className="text-white text-lg font-medium inter-tight-700 transition-colors duration-200 hover:text-rose-500"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
-          <div className='flex items-center space-x-4'>
+          <div className='flex items-center space-x-12'>
           <MobileMenu />
           </div>
         </div>

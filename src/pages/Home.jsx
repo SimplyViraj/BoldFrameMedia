@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
-import Hero from '../pages/Hero';
+import Hero from '../components/Hero';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -25,7 +25,7 @@ const Home = () => {
         start: 'top center', 
         end: 'top top',    
         scrub: true,
-        markers: true,
+        markers:false,
         duration: 3,
       },
     });

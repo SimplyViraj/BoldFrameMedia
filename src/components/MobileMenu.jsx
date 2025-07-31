@@ -2,26 +2,16 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { navItems} from '../constants';
 
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Work', href: '/work' },
-  { name: 'Contact', href: '/contact' },
-];
-
-const previewImages = {
-  Home: '/assets/stock.jpeg',
-  About: '/images/preview-about.jpg',
-  Work: '/assets/preview-services.jpg',
-  Contact: '/images/preview-pricing.jpg',
-};
 
 // Utility to split nav item text into animated spans
 const splitLines = (text) => {
   return text.split(' ').map((word, i) => (
     <span key={i} className="block overflow-hidden">
-      <span className="inline-block translate-y-full">{word}&nbsp;</span>
+      <span className="inline-block translate-y-full inter-tight-700 leading-tight">
+        {word}&nbsp;
+      </span>
     </span>
   ));
 };
@@ -33,6 +23,7 @@ export default function MobileMenu() {
 
   const overlayRef = useRef(null);
   const navRefs = useRef([]);
+
 
   useLayoutEffect(() => {
     if (isOpen && overlayRef.current) {
@@ -67,13 +58,26 @@ export default function MobileMenu() {
         },
       });
     } else if (overlayRef.current) {
-      gsap.to(overlayRef.current, {
-        height: 0,
-        duration: 0.7,
+      const allSpans = navRefs.current.flatMap((el) =>
+        Array.from(el?.querySelectorAll('span span') || [])
+      );
+
+      gsap.to(allSpans, {
+        y: '100%',
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.03,
         ease: 'cubic-bezier(0.9, 0.1, 0.1, 0.9)',
         onComplete: () => {
-          setOverlayVisible(false);
-          setShowContent(false);
+          gsap.to(overlayRef.current, {
+            height: 0,
+            duration: 0.7,
+            ease: 'cubic-bezier(0.9, 0.1, 0.1, 0.9)',
+            onComplete: () => {
+              setOverlayVisible(false);
+              setShowContent(false);
+            },
+          });
         },
       });
     }
@@ -83,12 +87,10 @@ export default function MobileMenu() {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen]);
 
-  const showPreview = (e, item) => {
+  const showPreview = (e) => {
     const preview = document.getElementById('cursor-preview');
-    const img = document.getElementById('preview-img');
-    if (!preview || !img) return;
+    if (!preview) return;
 
-    img.src = previewImages[item.name];
     preview.style.display = 'block';
 
     const move = (e) => {
@@ -100,7 +102,6 @@ export default function MobileMenu() {
     window.addEventListener('mousemove', move);
     preview._cleanup = () => window.removeEventListener('mousemove', move);
   };
-
   const hidePreview = () => {
     const preview = document.getElementById('cursor-preview');
     if (preview && preview._cleanup) preview._cleanup();
@@ -112,7 +113,7 @@ export default function MobileMenu() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="z-50 fixed top-4 right-4 p-2 bg-white rounded-full shadow-md"
+        className="z-50 fixed top-4 right-4 p-2 bg-white rounded-none shadow-md"
       >
         {isOpen ? <X className="text-black h-8 w-8" /> : <Menu className="text-black h-8 w-8" />}
       </button>
@@ -127,39 +128,52 @@ export default function MobileMenu() {
       >
         {showContent && (
           <div className="flex flex-col h-full text-black relative">
-
-            <div className="flex flex-col lg:flex-row gap-[3.75rem] ">
-              {/* Logo */}
+            <div className="flex flex-col lg:flex-row gap-[3.75rem] h-full">
               <div className="lg:flex items-start justify-center lg:justify-start p-6">
                 <img
-                  src="/assets/BFM Icon Red.svg"
+                  src="/assets/BFM Icon Black.svg"
                   alt="BFM Logo"
-                  className="w-20 h-20"
+                  className="w-25 h-auto"
                 />
               </div>
 
               {/* Navigation and Contact */}
-              <div className="flex-1 flex items-center lg:items-start justify-between p-[3.75rem] h-full">
-                <ul className="text-[clamp(3rem,8vw,7rem)] text-inter-tight font-black py-16 leading-tight space-y-2">
+              <div className="flex-0 flex flex-col lg:flex-row gap-16 lg:gap-[15rem] items-start justify-between p-[3.75rem] h-full w-full">
 
+          
+                <ul className="text-[clamp(3rem,8vw,7rem)] py-8 leading-tight tracking-tighter w-full">
                   {navItems.map((item, i) => (
                     <li
                       key={item.name}
                       ref={(el) => (navRefs.current[i] = el)}
-                      onMouseEnter={(e) => showPreview(e, item)}
-                      onMouseLeave={hidePreview}
+                      style={{
+                        marginTop: i !== 0 ? 'clamp(-3rem, -6vw, -3.25rem)' : 0,
+                      }}
+                      onMouseEnter={(e) => {
+                        showPreview(e, item);
+                        navRefs.current.forEach((el, idx) => {
+                          if (idx !== i) el.style.opacity = '0.5';
+                        });
+                      }}
+                      onMouseLeave={() => {
+                        hidePreview();
+                        navRefs.current.forEach((el) => {
+                          el.style.opacity = '1';
+                        });
+                      }}
                       onClick={() => setIsOpen(false)}
-                      className="hover:text-rose-500 cursor-pointer transition-colors"
+                      className="cursor-pointer transition-colors relative"
                     >
-                      <Link to={item.href} className="inline-block">
+                      <Link to={item.href} className="inline-block relative group">
                         {splitLines(item.name)}
+                        <span className="absolute bottom-2 left-0 h-[0.1em] bg-black w-0 group-hover:w-full transition-all ease-[cubic-bezier(0.9,0.1,0.1,0.9)] duration-700" />
                       </Link>
                     </li>
                   ))}
                 </ul>
 
                 {/* Contact Info */}
-                <div className="flex flex-col flex-col-reverse items-start space-y-6 lg:items-end text-right">
+                <div className="flex flex-col justify-end items-start lg:items-start text-left space-y-6 py-12 h-full w-full max-w-xs">
                   {/* Social Icons */}
                   <div className="flex space-x-4">
                     {['instagram', 'facebook', 'x', 'linkedin', 'youtube'].map((icon, i) => (
@@ -179,38 +193,22 @@ export default function MobileMenu() {
                   {/* Email and Phone */}
                   <div className="text-sm space-y-2">
                     <div>
-                      <span className="text-gray-500">(Inquiries)</span><br />
-                      <a href="mailto:john@jt-studio.com" className="underline">john@jt-studio.com</a>
+                      <span className="text-gray-500">(Inquiries)</span>
+                      <br />
+                      <a href="mailto:john@jt-studio.com" className="underline">
+                        viraj.com
+                      </a>
                     </div>
                     <div>
-                      <span className="text-gray-500">(Phone)</span><br />
-                      <a href="tel:+49123456789" className="underline">+49 1234 56789</a>
+                      <span className="text-gray-500">(Phone)</span>
+                      <br />
+                      <a href="tel:+8688344975" className="underline">
+                        +8688344975
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Image Preview */}
-            <div
-              id="cursor-preview"
-              className="fixed z-50 hidden pointer-events-none"
-              style={{
-                width: 200,
-                height: 200,
-                borderRadius: '8px',
-                overflow: 'hidden',
-                top: 0,
-                left: 0,
-                transform: 'translate(30%, -80%)',
-              }}
-            >
-              <img
-                id="preview-img"
-                src=""
-                alt="Preview"
-                className="w-full h-full object-cover"
-              />
             </div>
           </div>
         )}
