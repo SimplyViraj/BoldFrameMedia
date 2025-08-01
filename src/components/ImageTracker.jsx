@@ -115,42 +115,42 @@ export default function ImageTracker() {
         className="image-tracker flex gap-4 absolute left-1/2 top-1/2 -translate-y-1/2  overflow-x-hidden z-10"
       >
           <img 
-            src="/assets/stock.jpeg"
+            src="/assets/stock1.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock2.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock3.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock4.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock5.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock6.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock7.jpeg"
             className="about-image"
             draggable="false"
           />
           <img
-            src="/assets/stock.jpeg"
+            src="/assets/stock8.jpeg"
             className="about-image"
             draggable="false"
           />

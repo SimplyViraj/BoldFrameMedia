@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import ImageTracker from '../components/ImageTracker';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 gsap.registerPlugin(SplitText);
 
-const About = () => {
+const MeetTheTeam = () => {
   useEffect(() => {
     const profileImageContainer = document.querySelector('.profile-images');
     const profileImages = profileImageContainer.querySelectorAll('.profile-images .img');
@@ -106,4 +105,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default MeetTheTeam;

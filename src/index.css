@@ -138,6 +138,35 @@
 * {
   scroll-behavior: smooth;
 }
+
+@media (max-width: 900px) {
+  .team{
+    flex-direction: column-reverse;
+    max-width: 90%;
+    justify-content: center;
+  }
+
+  .profile-images {
+    flex-wrap: wrap;
+    max-width: 90%;
+    justify-content: center;
+  }
+  .img{
+    width: 60px;
+    height: 60px;
+    padding: 2.5;
+  }
+  .name h1
+  {
+    font-size:4rem;
+    letter-spacing: 0;
+  }
+  .profile-names
+  {
+    height: 4rem;
+  }
+  }
+
 @layer {
 
 
@@ -179,15 +208,15 @@
     @apply flex gap-4 absolute left-1/2 top-1/2 -translate-y-1/2;
   }
   .img{
-    @apply w-[70px] h-[70px] p-[5px] cursor-pointer will-change-[width,height] object-cover;
+    @apply relative w-[70px] h-[70px] p-[5px] cursor-pointer will-change-[width,height] object-cover;
   }
-  .name {
-    @apply absolute w-[100%] text-center text-transform-uppercase inter-tight-900 text-[20rem] tracking-tighter line-height-[1] text-[#F93535] user-select-none transform-translate-y-[-50%];
+  .name h1{
+    @apply absolute w-[100%] text-center uppercase text-[16rem] tracking-tighter translate-y-[100%];
   }
   .name.default h1 {
-    @apply text-white transform-translate-y-[-100%];
+    @apply text-white translate-y-[0%];
   }
   .name h1 .letter {
-    @apply relative transform-translate-y-[0%] will-change-[transform];
+    @apply absolute translate-y-0 will-change-transform;
   }
 }
