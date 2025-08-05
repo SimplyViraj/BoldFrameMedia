@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
 export default function ImageTracker() {
@@ -7,10 +6,6 @@ export default function ImageTracker() {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-
-    // Lock body overflow globally
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
 
     track.dataset.mouseDownAt = "0";
     track.dataset.prevPercentage = "0";
@@ -53,14 +48,12 @@ export default function ImageTracker() {
     };
 
     const handleWheel = (e) => {
-      if (!track) return;
-
-      const delta = e.deltaX || e.deltaY * 0.5; // slow it down by half
+      const delta = e.deltaX || e.deltaY * 0.3;
       if (Math.abs(delta) < 1) return;
 
       const containerWidth = track.offsetWidth;
       const maxDelta = containerWidth / 2;
-      const percentage = (delta / maxDelta) * -50; // dampen to -50 instead of -100
+      const percentage = (delta / maxDelta) * -50;
 
       const nextPercentageUnconstrained =
         parseFloat(track.dataset.percentage) + percentage;
@@ -81,80 +74,50 @@ export default function ImageTracker() {
       }
     };
 
-    
-
+    // Mouse & touch events
     window.addEventListener("mousedown", handleOnDown);
     window.addEventListener("mouseup", handleOnUp);
     window.addEventListener("mousemove", handleOnMove);
     window.addEventListener("touchstart", (e) => handleOnDown(e.touches[0]));
-    window.addEventListener("touchend", () => handleOnUp());
+    window.addEventListener("touchend", handleOnUp);
     window.addEventListener("touchmove", (e) => handleOnMove(e.touches[0]));
     window.addEventListener("wheel", handleWheel, { passive: true });
 
     return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-
       window.removeEventListener('mousedown', handleOnDown);
       window.removeEventListener('mouseup', handleOnUp);
       window.removeEventListener('mousemove', handleOnMove);
       window.removeEventListener('touchstart', (e) => handleOnDown(e.touches[0]));
-      window.removeEventListener('touchend', () => handleOnUp());
+      window.removeEventListener('touchend', handleOnUp);
       window.removeEventListener('touchmove', (e) => handleOnMove(e.touches[0]));
       window.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-[#0F0F0F] overflow-hidden flex items-center justify-center relative">
-      <div className='absolute left-0 p-4 inter-tight-700 text-white text-[clamp(5rem,2vw,6rem)] z-0'> 
-       Some Of Our Work
+    <div className="h-screen w-screen bg-white flex items-center justify-center relative overflow-hidden no-scrollbar">
+      <div>
+        <span className='absolute top-0 left-0 text-[#9D9D9D] font-[0.99em] inter-300 leading-tight p-8'>
+          (Our work)
+        </span>
       </div>
-      <div
-        ref={trackRef}
-        className="image-tracker flex gap-4 absolute left-1/2 top-1/2 -translate-y-1/2  overflow-x-hidden z-10"
-      >
-          <img 
-            src="/assets/stock1.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock2.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock3.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock4.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock5.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock6.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock7.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-          <img
-            src="/assets/stock8.jpeg"
-            className="about-image"
-            draggable="false"
-          />
-      </div>
-    </div>
+
+  <div
+    ref={trackRef}
+    className="image-tracker flex gap-4 absolute left-1/2 top-1/2 -translate-y-1/2 z-10 select-none no-scrollbar"
+    style={{ transform: "translateX(0%)", userSelect: "none" }}
+  >
+    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+      <img
+        key={num}
+        src={`/images/stock${num}.jpg`}
+        className="about-image pointer-events-none select-none"
+        draggable="false"
+        onDragStart={(e) => e.preventDefault()}
+      />
+    ))}
+  </div>
+</div>
+
   );
 }

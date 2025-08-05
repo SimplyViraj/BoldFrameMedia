@@ -68,6 +68,7 @@ export default function MobileMenu() {
         duration: 0.5,
         stagger: 0.03,
         ease: 'cubic-bezier(0.9, 0.1, 0.1, 0.9)',
+        toggleAction: 'play none none reverse',
         onComplete: () => {
           gsap.to(overlayRef.current, {
             height: 0,
@@ -128,7 +129,7 @@ export default function MobileMenu() {
       >
         {showContent && (
           <div className="flex flex-col h-full text-black relative">
-            <div className="flex flex-col lg:flex-row gap-[3.75rem] h-full">
+            <div className="flex flex-col lg:flex-row md:gap-[3.75rem] h-full">
               <div className="lg:flex items-start justify-center lg:justify-start p-6">
                 <img
                   src="/assets/BFM Icon Black.svg"
@@ -138,10 +139,10 @@ export default function MobileMenu() {
               </div>
 
               {/* Navigation and Contact */}
-              <div className="flex-0 flex flex-col lg:flex-row gap-16 lg:gap-[15rem] items-start justify-between p-[3.75rem] h-full w-full">
+              <div className="flex-0 flex flex-col lg:flex-row md:gap-16 lg:gap-[15rem] items-start justify-between p-[3.75rem] h-full w-full">
 
           
-                <ul className="text-[clamp(3rem,8vw,7rem)] py-8 leading-tight tracking-tighter w-full">
+                <ul className="text-[clamp(3rem,8vw,7rem)] py-4 md:py-8 leading-[1.6] md:leading-tight tracking-tighter w-full">
                   {navItems.map((item, i) => (
                     <li
                       key={item.name}
@@ -173,7 +174,7 @@ export default function MobileMenu() {
                 </ul>
 
                 {/* Contact Info */}
-                <div className="flex flex-col justify-end items-start lg:items-start text-left space-y-6 py-12 h-full w-full max-w-xs">
+                <div className="flex flex-col justify-end items-start lg:items-start text-left md:space-y-6 md:py-12 h-full w-full max-w-xs">
                   {/* Social Icons */}
                   <div className="flex space-x-4">
                     {['instagram', 'facebook', 'x', 'linkedin', 'youtube'].map((icon, i) => (
@@ -191,16 +192,16 @@ export default function MobileMenu() {
                   </div>
 
                   {/* Email and Phone */}
-                  <div className="text-sm space-y-2">
+                  <div className="text-sm md:space-y-2">
                     <div>
-                      <span className="text-gray-500">(Inquiries)</span>
+                      <span className="text-gray-500 hidden md:inline">(Inquiries)</span>
                       <br />
                       <a href="mailto:john@jt-studio.com" className="underline">
                         viraj.com
                       </a>
                     </div>
                     <div>
-                      <span className="text-gray-500">(Phone)</span>
+                      <span className="text-gray-500 hidden md:inline">(Phone)</span>
                       <br />
                       <a href="tel:+8688344975" className="underline">
                         +8688344975

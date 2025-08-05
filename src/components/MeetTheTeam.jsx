@@ -89,7 +89,7 @@ const MeetTheTeam = () => {
           <div className="img"><img className="w-[100%] h-[100%] object-cover rounded-[0.5rem]" src="/images/profile9.jpg" alt="Profile 9" /></div>
         </div>
         <div className="profile-names relative w-[100%] h-[20rem] clip-path(polygon(0 0, 100% 0, 100% 100%, 0 100%)) inter-tight-black text-[#f93535] overflow-hidden">
-          <div className="name default"><h1>The Squad</h1></div>
+          <div className="name default"><h1>Our Team</h1></div>
           <div className="name"><h1>Viraj</h1></div>    
           <div className="name"><h1>Aditi</h1></div>
           <div className="name"><h1>Ravi</h1></div>

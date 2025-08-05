@@ -18,7 +18,7 @@ export default function ScrollableVideo() {
             ScrollTrigger.create({
                 trigger: sectionRefs.current[index],
                 start: "top bottom",
-                end: "bottom center",
+                end: "bottom bottom",
                 onEnter: () => setCurrentIndex(index),
                 onEnterBack: () => setCurrentIndex(index),
             });
@@ -27,14 +27,13 @@ export default function ScrollableVideo() {
         return () => ScrollTrigger.getAll().forEach((t) => t.kill());
     }, []);
 
-    // Video scaling on scroll
     useEffect(() => {
         videoRefs.current.forEach((video, index) => {
             if (!video) return;
 
             ScrollTrigger.getById(`video-${index}`)?.kill();
             if (index == 0) {
-                video.style.transform = "scale(1)";
+                video.style.scale = "1";
                 return;
             }
             gsap.fromTo(
@@ -64,14 +63,17 @@ export default function ScrollableVideo() {
             <div className="flex flex-col md:flex-row">
                 {/* Scrollable Content */}
                 <div className="md:w-1/2 w-full">
+                <div className="text-[#9D9D9D] font-[0.99em] inter-300 leading-tight px-6">
+                    (Services)
+                </div>
                     {services.map((service, i) => (
                         <section
                             key={service.id}
                             ref={(el) => (sectionRefs.current[i] = el)}
-                            className="h-screen flex flex-col justify-center px-32 bg-white"
+                            className="mt-20 md:h-screen flex flex-col justify-center md:px-32 bg-white scroll-smoother"
                         >
-                            {/* Mobile: video inside each section */}
-                            <div className="block md:hidden w-full h-64 mb-6 overflow-hidden rounded-xl shadow-lg">
+                            <h2 className="text-3xl md:text-5xl inter-tight-black tracking-tight leading font-bold mb-2 px-4 md:px-0">{service.title}</h2>
+                            <div className="block md:hidden w-[100vw] h-64 mb-4 p-4 overflow-hidden">
                                 <video
                                     src={service.videoSrc}
                                     autoPlay={currentIndex === i}
@@ -81,27 +83,28 @@ export default function ScrollableVideo() {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            <h2 className="text-5xl inter-tight-bold tracking-tight leading font-bold mb-2">{service.title}</h2>
 
                             {/* Divider */}
-                            <hr className="border-[#D9D9D9] mb-4 w-full border-1" />
+                            <hr className="border-[#D9D9D9] mb-4 hidden md:block w-full border-1" />
 
                             {/* Features */}
-                            <div className="flex flex-wrap gap-x-[0.94rem] gap-y-[0.5rem] inter-500 mb-2 text-lg text-black">
+                            <div className="flex flex-wrap gap-x-[0.94rem] gap-y-[0.5rem] inter-500 mb-2 px-4 md:px-0 text-sm md:text-lg text-black">
                                 {service.features?.map((feature, idx) => (
-                                    <span key={idx} className="flex items-center">
+                                    <span key={idx} className="inter-tight-700 md:inter-700 flex items-center">
                                         ● {feature}
                                     </span>
                                 ))}
                             </div>
 
                             {/* Second Divider */}
-                            <hr className="border-[#D9D9D9] mb-2 w-full border-1" />
+                            <hr className="border-[#D9D9D9] w-full mb-2 hidden md:block border-1" />
 
                             {/* Description */}
-                            <p className="text-[#9D9D9D] font-[0.99em] inter-300 leading-tight">
+                            <p className="text-[#4B4B4B] inter-tight-black opacity-[60%] leading-tight px-4 md:px-0 mt-6 md:mt-2 mb-20 text-sm md:text-base md:px-0">
                                 {service.description}
                             </p>
+                            
+                            <hr className="border-[#D9D9D9] w-full md:hidden mb-2 md:block border-1" />
                         </section>
                     ))}
                 </div>
