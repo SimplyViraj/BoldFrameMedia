@@ -32,11 +32,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <Navbar />
       <Hero />
 
-      <div className="relative flex justify-center items-center bg-[url('/assets/background.jpg')] bg-fill max-w-[100%]] mx-auto">
+      <div className="relative flex justify-center items-center bg-fill max-w-[100%]] mx-auto">
         <img
           ref={imgRef}
           src="/assets/stock.jpeg"

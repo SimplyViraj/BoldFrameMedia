@@ -7,6 +7,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
+const Pricing = lazy(() => import('./pages/Pricing'));
 function App() {
   const [showLoader, setShowLoader] = useState(false);
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="*" element={<div>404 Not Found</div>} />
         <Route path="/portfolio" element={<Portfolio />} />
       </Routes>

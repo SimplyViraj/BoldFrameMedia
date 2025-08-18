@@ -1,11 +1,11 @@
 import React from 'react'
 import MobileMenu from './MobileMenu'
-const Navbar2 = () => {
+const Navbar2 = ({ logo=1 }) => {
   return (
    <header className="w-full flex justify-between items-start px-6 py-6  pb-20 md:pb-40">
   
         <div className='fixed top-2 left-2 z-0'>
-          <img src="/assets/BFM Icon Black.svg" alt="BFM Logo" className=" w-16 md:w-24 h-auto" />
+          <img src={logo === 1 ? "/assets/BFM Icon Black.svg" : "/assets/BFM Icon White.svg"} alt="BFM Logo" className=" w-16 md:w-24 h-auto" />
         </div>
 
         <div className='invisible'>

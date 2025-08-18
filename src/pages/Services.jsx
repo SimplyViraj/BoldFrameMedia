@@ -2,6 +2,7 @@ import React from 'react'
 import ScrollableVideo from '../components/ScrollableVid'
 import Navbar2 from '../components/Navbar2'
 import ImageTracker from '../components/ImageTracker';
+import Footer from '../components/footer';
 
 const Services = () => {
   return (
@@ -32,7 +33,10 @@ const Services = () => {
     <section className="relative h-screen w-full">
             <ImageTracker />
           </section>
+
+      <Footer />
     </div>
+
     
   );
 }

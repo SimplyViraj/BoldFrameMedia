@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import LightRays from './LightRays';
-
+import Navbar2 from './Navbar2';
 export default function Hero({
   mainCtaText = "Get a Quote",
   secondCtaText = "View Portfolio",
@@ -28,14 +28,10 @@ export default function Hero({
   return (
     <div className="min-h-screen relative bg-black bg-auto text-white overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('/assets/background.jpg')] bg-contain opacity-60" />
+        
+        <div className="absolute inset-0 bg-[url('/assets/background.jpg')] bg-auto md:bg-position-[center_top_-8rem] opacity-60" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_30%,_rgba(0,0,0,0.9)_100%)]" />
         <div className="flex items-center justify-center h-full">
-          {/* <img
-            src="/assets/BFM Icon Red.svg"
-            className="w-[40%] min-w-[500px] h-auto opacity-90 object-contain"
-            alt="BFM Icon"
-          /> */}
         </div>
       </div>
       <div ref={lightRef} style={{ width: '100%', height: '690px', position: 'relative' }}>
