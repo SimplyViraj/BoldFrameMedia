@@ -32,7 +32,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#0F0F0F]">
       <Navbar />
       <Hero />
 
@@ -44,12 +44,12 @@ const Home = () => {
           className="image h-auto object-cover"
         />
       </div>
-      <div className="flex flex-col items-center justify-center max-w-[65%] mx-auto text-white text-[24px] text-center mt-10">
+      <div className="flex flex-col items-center justify-center max-w-[65%] mx-auto text-white text-lg text-center mt-10">
         <h1 className="mb-4">We have over half a decade of experience upscaling businesses, making users happy, and utilising our expertise to set new standards. We go the extra mile to create impactful digital solutions for Fintech, SaaS, Healthcare, E-commerce, Web, and Mobile products.</h1>
-        <span className="text-rough font-bold">Still why choose us...?</span>
+        <span className="text-[#f93535] font-bold">Still why choose us...?</span>
         </div>
 
-      <div className="h-[200vh] bg-black"></div>
+      <div className="h-[200vh] bg-[#0F0F0F]"></div>
     </div>
   );
 };
