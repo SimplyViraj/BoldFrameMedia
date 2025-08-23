@@ -1,6 +1,7 @@
 import Navbar2 from '@/components/Navbar2'
 import React from 'react'
 import Content from '@/components/Content'
+import Prices from '@/components/Prices'
 
 const Pricing = () => {
   return (
@@ -15,6 +16,7 @@ const Pricing = () => {
                   ↓ Scroll to Explore
                 </div>
               </section>
+              <Prices />
     </div>
   )
 }

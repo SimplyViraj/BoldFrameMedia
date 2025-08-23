@@ -7,6 +7,9 @@ import Content from '../components/Content';
 import Testimonials from '@/components/Testimonials';
 import Stats from '@/components/Stats';
 import Footer from '@/components/Footer';
+import MansoryGrid from '@/components/MansoryGrid';
+import Cta1 from '@/components/Cta1';
+import Spotlight from '@/components/Spotlight';
 const About = () => {
   useEffect(() => {
     document.body.classList.add('no-scrollbar');
@@ -31,8 +34,9 @@ const About = () => {
           ↓ Scroll to Explore
         </div>
       </section>
-
-      
+      <section className="p-10">
+      <MansoryGrid />
+      </section>
       <section >
         <Testimonials />
       </section>
@@ -46,21 +50,15 @@ const About = () => {
         </span>
         <MeetTheTeam />
         </section>
-   
-
-      {/* Final CTA */}
-      <section className="h-screen flex flex-col items-center justify-center text-center bg-[#0F0F0F] relative">
-        <img src="/assets/stock.jpeg" alt="cta-bg" className="absolute inset-0 w-full h-full object-cover opacity-20" />
-        <div className="z-10">
-          <h2 className="text-[clamp(3rem,5vw,6rem)] font-bold mb-6">
-            Ready To Build Something <span className="text-red-500">Extraordinary?</span>
-          </h2>
-          <button className="px-10 py-4 bg-red-500 hover:bg-red-600 transition rounded-full text-white text-lg mt-6">
-            Start Your Project
-          </button>
-        </div>
-      </section>
-
+        
+  <section>
+     <span className='text-[#9D9D9D] font-[0.99em] inter-300 leading-tight p-20 mb-2'>
+           (What are you waitingg for??)
+        </span>
+<Spotlight className="custom-spotlight-card" spotlightColor="rgba(249, 53, 53, 0.4)">
+ <Cta1 />
+</Spotlight>
+</section>
      <Footer />
     </div>
   );

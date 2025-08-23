@@ -13,11 +13,17 @@ export const previewImages = {
 export const services = [
   {
     id: "branding",
-    title: "Branding",
-    features: ["Analysis", "Strategy", "Design", "Brand communication", "Brand guidelines"],
+    title: "Brand & Visual Design",
+    features: [
+      "Budget Logo",
+      "Custom Logo",
+      "Social Media",
+      "Infographics","Presentations",
+      "Packaging & Label"
+    ],
     description:
       "I create unique brand identities that tell your story and connect with your audience. From logo design to brand strategy, I craft cohesive visuals and messaging that make your brand stand out.",
-    videoSrc: "/videos/Cam.mp4",
+    videoSrc: "/images/stock1.jpg",
     color2: "black",
   },
   {

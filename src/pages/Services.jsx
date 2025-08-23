@@ -3,6 +3,7 @@ import ScrollableVideo from '../components/ScrollableVid'
 import Navbar2 from '../components/Navbar2'
 import ImageTracker from '../components/ImageTracker';
 import Footer from '../components/footer';
+import Carousel from '@/components/Carousel';
 
 const Services = () => {
   return (
@@ -28,12 +29,11 @@ const Services = () => {
 
     <div className="w-[100%] h-[10vh] md:h-[30vh] bg-white " />
       <ScrollableVideo />
-      
     <div className="w-[100%] h-[10vh] md:h-[30vh] bg-white " />
     <section className="relative h-screen w-full">
             <ImageTracker />
           </section>
-
+          <Carousel />
       <Footer />
     </div>
 
