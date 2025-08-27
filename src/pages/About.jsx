@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import MansoryGrid from '@/components/MansoryGrid';
 import Cta1 from '@/components/Cta1';
 import Spotlight from '@/components/Spotlight';
+import ProfileCard from '@/components/ProfileCard';
 const About = () => {
   useEffect(() => {
     document.body.classList.add('no-scrollbar');
@@ -26,40 +27,73 @@ const About = () => {
 
       {/* Hero Section */}
       <section className="relative h-auto flex flex-col text-left">
-       <div className='text-6xl md:text-[clamp(9rem,4vw,9rem)] inter-tight-900 font-bold leading-tighter tracking-tighter px-2 py-16 md:py-0 md:px-4'>
-        ABOUT US
-       </div>
-       <Content />
+        <div className='text-6xl md:text-[clamp(9rem,4vw,9rem)] inter-tight-900 font-bold leading-tighter tracking-tighter px-2 py-16 md:py-0 md:px-4'>
+          ABOUT US
+        </div>
+        <Content />
         <div className="absolute right-10 bottom-[-7%] text-gray-400 text-sm animate-bounce z-10">
           ↓ Scroll to Explore
         </div>
       </section>
       <section className="p-10">
-      <MansoryGrid />
+        <MansoryGrid />
       </section>
       <section >
         <Testimonials />
       </section>
-    
+
       <section className="bg-[#0F0F0F]">
         <Stats />
       </section>
       <section className='py-10'>
+        <div className="lg:flex lg:flex-row p-10">
+          <div className='flex-grow'>
+            <div className='text-6xl md:text-[clamp(3rem,2vw,3rem)] inter-tight-900 font-bold leading-tighter tracking-tighter px-2 py-16 md:py-0 md:px-4'>
+          Meet The Founder - Tharun Kumar Naik
+        </div>
+        <div>
+          <p className="bg-[#0f0f0f] rounded-lg m-4 p-2">
+            Lyro ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lyro ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lyro ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lyro ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          </div>
+        </div>
+        <ProfileCard
+          imageSrc="images/stock1.jpg"
+          altText="Tharun"
+          captionText="Tharun Kumar Naik"
+          containerHeight="400px"
+          containerWidth="300px"
+          imageHeight="400px"
+          imageWidth="300px"
+          rotateAmplitude={12}
+          scaleOnHover={1.2}
+          showMobileWarning={false}
+          showTooltip={true}
+          displayOverlayContent={true}
+          overlayContent={
+            <p className="bg-[#0f0f0f] rounded-lg m-4 p-2">
+              Tharun Kumar Naik
+            </p>
+          }
+        />
+
+        </div>
+
         <span className='text-[#9D9D9D] font-[0.99em] inter-300 leading-tight p-8'>
           (Meet the Team)
         </span>
         <MeetTheTeam />
-        </section>
-        
-  <section>
-     <span className='text-[#9D9D9D] font-[0.99em] inter-300 leading-tight p-20 mb-2'>
-           (What are you waitingg for??)
+      </section>
+
+      <section>
+        <span className='text-[#9D9D9D] font-[0.99em] inter-300 leading-tight p-20 mb-2'>
+          (What are you waitingg for??)
         </span>
-<Spotlight className="custom-spotlight-card" spotlightColor="rgba(249, 53, 53, 0.4)">
- <Cta1 />
-</Spotlight>
-</section>
-     <Footer />
+        <Spotlight className="custom-spotlight-card" spotlightColor="rgba(249, 53, 53, 0.4)">
+          <Cta1 />
+        </Spotlight>
+      </section>
+      <Footer />
     </div>
   );
 };

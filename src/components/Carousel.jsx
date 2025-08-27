@@ -1,55 +1,8 @@
 import React, { useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 
-const products = [
-  {
-    id: 0,
-    type: "intro",
-    title: "In with the new.",
-    subtitle: "The accessories you love.\nIn a fresh mix of colours.",
-    images: [
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-case-blue?wid=400&hei=400", 
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-watch-pink?wid=400&hei=400"
-    ]
-  },
-  {
-    id: 1,
-    title: "iPhone 16 Pro Max Silicone Case with MagSafe – Peony",
-    price: "₹4900.00",
-    img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MT4Y3?wid=600&hei=600&fmt=jpeg&qlt=95&.v=1692826923000",
-  
-  },
-  {
-    id: 2,
-    title: "iPhone 16 Clear Case with MagSafe",
-    price: "₹4900.00",
-    img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MRXT3?wid=600&hei=600&fmt=jpeg&qlt=95&.v=1692826922000",
 
-  },
-  {
-    id: 3,
-    title: "iPhone 16e Silicone Case – Lake Green",
-    price: "₹3900.00",
-    img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU773?wid=600&hei=600&fmt=jpeg&qlt=95&.v=1692826921000",
-
-  },
-  {
-    id: 4,
-    title: "iPhone 16e Silicone Case – Lake Green",
-    price: "₹3900.00",
-    img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU773?wid=600&hei=600&fmt=jpeg&qlt=95&.v=1692826921000",
-
-  },
-   {
-    id: 5,
-    title: "iPhone 16e Silicone Case – Lake Green",
-    price: "₹3900.00",
-    img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MU773?wid=600&hei=600&fmt=jpeg&qlt=95&.v=1692826921000",
-    
-  },
-];
-
-export default function Carousel() {
+export default function Carousel({ products }) {
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -64,7 +17,7 @@ export default function Carousel() {
   return (
     <section className="w-full bg-gray-50 py-10">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
+
         <h2 className="text-2xl font-semibold tracking-tight">
           Branding & Visual Design.{" "}
           <span className="font-normal text-gray-500">
@@ -72,9 +25,8 @@ export default function Carousel() {
           </span>
         </h2>
 
-        {/* Carousel wrapper */}
         <div className="relative mt-8">
-          {/* Left button */}
+
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2 z-10 hover:bg-gray-100"
@@ -82,7 +34,6 @@ export default function Carousel() {
             <ChevronLeft size={24} />
           </button>
 
-          {/* Scrollable container */}
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-scroll scroll-smooth no-scrollbar"
@@ -135,7 +86,6 @@ export default function Carousel() {
             )}
           </div>
 
-          {/* Right button */}
           <button
             onClick={() => scroll("right")}
             className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2 z-10 hover:bg-gray-100"

@@ -41,3 +41,50 @@ export const services = [
     videoSrc: "/videos/Video Edit.mp4",
   },
 ];
+export const products = [
+  {
+    id: 0,
+    type: "intro",
+    title: "In with the new.",
+    subtitle: "The accessories you love.\nIn a fresh mix of colours.",
+    images: [
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-case-blue?wid=400&hei=400", 
+      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-watch-pink?wid=400&hei=400"
+    ]
+  },
+  {
+    id: 1,
+    title: "iPhone 16 Pro Max Silicone Case with MagSafe – Peony",
+    price: "₹4900.00",
+    img: "/images/stock1.jpg",
+  
+  },
+  {
+    id: 2,
+    title: "iPhone 16 Clear Case with MagSafe",
+    price: "₹4900.00",
+    img: "/images/stock2.jpg",
+
+  },
+  {
+    id: 3,
+    title: "iPhone 16e Silicone Case – Lake Green",
+    price: "₹3900.00",
+    img: "/images/stock3.jpg",
+
+  },
+  {
+    id: 4,
+    title: "iPhone 16e Silicone Case – Lake Green",
+    price: "₹3900.00",
+    img: "/images/stock4.jpg",
+
+  },
+   {
+    id: 5,
+    title: "iPhone 16e Silicone Case – Lake Green",
+    price: "₹3900.00",
+    img: "/images/stock5.jpg",
+
+  },
+];

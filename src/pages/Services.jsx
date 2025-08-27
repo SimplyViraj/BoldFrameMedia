@@ -2,8 +2,9 @@ import React from 'react'
 import ScrollableVideo from '../components/ScrollableVid'
 import Navbar2 from '../components/Navbar2'
 import ImageTracker from '../components/ImageTracker';
-import Footer from '../components/footer';
+import Footer from '../components/Footer';
 import Carousel from '@/components/Carousel';
+import { products } from '@/constants';
 
 const Services = () => {
   return (
@@ -28,12 +29,13 @@ const Services = () => {
 
 
     <div className="w-[100%] h-[10vh] md:h-[30vh] bg-white " />
-      <ScrollableVideo />
+     <Carousel products={products} />
+      <Carousel products={products} />
+       <Carousel products={products} />
     <div className="w-[100%] h-[10vh] md:h-[30vh] bg-white " />
     <section className="relative h-screen w-full">
             <ImageTracker />
           </section>
-          <Carousel />
       <Footer />
     </div>
 
