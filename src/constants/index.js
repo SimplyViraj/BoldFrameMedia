@@ -54,35 +54,35 @@ export const products = [
   },
   {
     id: 1,
-    title: "iPhone 16 Pro Max Silicone Case with MagSafe – Peony",
+    title: "BOld FRame Media",
     price: "₹4900.00",
     img: "/images/stock1.jpg",
   
   },
   {
     id: 2,
-    title: "iPhone 16 Clear Case with MagSafe",
+    title: "BOld FRame Media",
     price: "₹4900.00",
     img: "/images/stock2.jpg",
 
   },
   {
     id: 3,
-    title: "iPhone 16e Silicone Case – Lake Green",
+    title: "BOld FRame Media",
     price: "₹3900.00",
     img: "/images/stock3.jpg",
 
   },
   {
     id: 4,
-    title: "iPhone 16e Silicone Case – Lake Green",
+    title: "BOld FRame Media",
     price: "₹3900.00",
     img: "/images/stock4.jpg",
 
   },
    {
     id: 5,
-    title: "iPhone 16e Silicone Case – Lake Green",
+    title: "BOld FRame Media",
     price: "₹3900.00",
     img: "/images/stock5.jpg",
 
