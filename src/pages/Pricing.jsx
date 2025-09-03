@@ -2,6 +2,7 @@ import Navbar2 from '@/components/Navbar2'
 import React from 'react'
 import Content from '@/components/Content'
 import Prices from '@/components/Prices'
+import Footer from '@/components/Footer'
 
 const Pricing = () => {
   return (
@@ -17,6 +18,7 @@ const Pricing = () => {
                 </div>
               </section>
               <Prices />
+              <Footer dark={1} />
     </div>
   )
 }
