@@ -26,15 +26,15 @@ const links = [
     },
 ]
 
-export default function Footer() {
+export default function Footer({dark=1}) {
     return (
-        <footer className="py-16 md:py-32">
+        <footer className={`py-16 md:py-32 ${dark ? 'bg-black text-white' : 'bg-white text-black'}`}>
             <div className="mx-auto max-w-5xl px-6">
                 <Link
                     href="/"
                     aria-label="go home"
                     className="mx-auto block size-fit">
-                    <img src="/assets/BFM Logo Black (2).svg" alt="Logo" className='w-70 h-auto pr-2' />
+                    <img src={`${dark ?  "/assets/BFM Logo White.svg" : "/assets/BFM Logo Black (2).svg"}`} alt="Logo" className='w-70 h-auto pr-2' />
                 </Link>
 
                 <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">

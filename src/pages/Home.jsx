@@ -3,6 +3,10 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollableVideo from '@/components/ScrollableVid';
+import Testimonials from '@/components/Testimonials';
+import Features from '@/components/Features';
+import Footer from '@/components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,10 +52,18 @@ const Home = () => {
         <h1 className="mb-4">We have over half a decade of experience upscaling businesses, making users happy, and utilising our expertise to set new standards. We go the extra mile to create impactful digital solutions for Fintech, SaaS, Healthcare, E-commerce, Web, and Mobile products.</h1>
         <span className="text-[#f93535] font-bold">Still why choose us...?</span>
         </div>
-
-      <div className="h-[200vh] bg-[#0F0F0F]"></div>
+        <div>
+          <Features />
+        </div>
+        <div>
+          <Testimonials />
+        </div>
+        <div className='py-20'>
+          <ScrollableVideo />
+        </div>
+        <Footer />
     </div>
   );
-};
+};           
 
 export default Home;

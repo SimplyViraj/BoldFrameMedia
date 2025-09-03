@@ -23,7 +23,7 @@ export const services = [
     ],
     description:
       "I create unique brand identities that tell your story and connect with your audience. From logo design to brand strategy, I craft cohesive visuals and messaging that make your brand stand out.",
-    videoSrc: "/images/stock1.jpg",
+    videoSrc: "/videos/Graphic Design.mp4",
     color2: "black",
   },
   {

@@ -11,12 +11,14 @@ export default function Navbar() {
   const headerRef = useRef(null);
 
   useEffect(() => {
-    gsap.from(headerRef.current, {
-      y: -100,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out",
-    });
+    if (headerRef.current) {
+      gsap.from(headerRef.current, {
+        y: -100,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+    }
 
     let lastScrollY = window.scrollY;
 
@@ -27,7 +29,7 @@ export default function Navbar() {
       lastScrollY = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -49,27 +51,29 @@ export default function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50"
       style={headerStyles}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex h-16 lg:h-20 items-center justify-between">
-          
-          {/* Logo */}
-         <Link to="/" className="flex items-center">
-  <div className="h-12 lg:h-50 overflow-hidden flex items-center">
-    <img
-      src="/assets/BFM Logo Red - White.svg"
-      alt="Logo"
-      className="h-full w-auto object-contain"
-    />
-  </div>
-</Link>
+        {/* use a relative container so the centered nav can be absolute */}
+        <div className="relative flex items-center h-16 lg:h-20">
+          {/* Left: Logo */}
+          <div className="flex items-center flex-shrink-0 z-10">
+            <Link to="/" className="flex items-center">
+              <div className="h-10 lg:h-60 flex items-center">
+                <img
+                  src="/assets/BFM Logo Red - White.svg"
+                  alt="Bold Frame Media"
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            </Link>
+          </div>
 
-
-          {/* Desktop Nav */}
+          {/* Center: Desktop nav (absolute centered so right/left don't affect centering) */}
           <nav
-            className={`hidden lg:flex items-center space-x-10 transition-all duration-300 ease-in-out ${
+            aria-label="Primary"
+            className={`hidden lg:flex absolute inset-y-0 left-1/2 transform -translate-x-1/2 items-center space-x-10 transition-all duration-300 ease-in-out z-0 ${
               scrollDirection === "down"
                 ? "opacity-0 pointer-events-none -translate-y-3"
                 : "opacity-100 pointer-events-auto translate-y-0"
@@ -86,12 +90,15 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right side (Mobile Menu) */}
-          <div className="flex items-center ml-6 lg:ml-10">
-            <div className="relative">
-            <MobileMenu className="!relative" />
-            </div>
+          {/* Right: Mobile menu trigger area (only visible on mobile) */}
+          <div className="ml-auto flex items-center z-10 lg:hidden">
+            {/* If MobileMenu is a fixed component with its own trigger, rendering it here
+                shouldn't affect layout. We keep it hidden on lg so desktop won't show it. */}
+            <MobileMenu />
           </div>
+
+          {/* Right-side placeholder on desktop to keep visual balance (invisible but occupies space) */}
+          <div className="hidden lg:block w-12" aria-hidden />
         </div>
       </div>
     </header>

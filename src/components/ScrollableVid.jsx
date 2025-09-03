@@ -60,7 +60,7 @@ export default function ScrollableVideo() {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row bg-[#0F0F0F]">
                 {/* Scrollable Content */}
                 <div className="md:w-1/2 w-full">
                 <div className="text-[#9D9D9D] font-[0.99em] inter-300 leading-tight px-6">
@@ -70,8 +70,13 @@ export default function ScrollableVideo() {
                         <section
                             key={service.id}
                             ref={(el) => (sectionRefs.current[i] = el)}
-                            className="mt-20 md:h-screen flex flex-col justify-center md:px-32 bg-white scroll-smoother"
+                            className="mt-20 relative md:h-screen flex flex-col justify-center md:px-32 bg-[#0F0F0F] scroll-smoother"
                         >
+                            <div className="flex-grow bg-white absolute w-[100vw] left-0 bottom-[35%] p-40 z-0">
+                            
+
+                            </div>
+                            <div className=" z-10">
                             <h2 className="text-3xl md:text-5xl inter-tight-black tracking-tight leading font-bold mb-2 px-4 md:px-0">{service.title}</h2>
                             <div className="block md:hidden w-[100vw] h-64 mb-4 p-4 overflow-hidden">
                                 <video
@@ -105,12 +110,14 @@ export default function ScrollableVideo() {
                             </p>
                             
                             <hr className="border-[#D9D9D9] w-full md:hidden mb-2 md:block border-1" />
+                             </div>
                         </section>
+                       
                     ))}
                 </div>
 
                 {/* Desktop Video Scaling */}
-                <div className="hidden md:block w-1/2 h-screen bg-black sticky top-0 overflow-hidden">
+                <div className="hidden md:block w-1/2 h-screen bg-[#0F0F0F] sticky top-0 overflow-hidden">
                     {services.map((service, i) => (
                         <video
                             key={service.id}
