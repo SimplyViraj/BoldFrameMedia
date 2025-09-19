@@ -68,7 +68,7 @@ export default function MobileMenu() {
         duration: 0.5,
         stagger: 0.03,
         ease: 'cubic-bezier(0.9, 0.1, 0.1, 0.9)',
-        toggleAction: 'play none none reverse',
+        toggleActions: 'play none none reverse', // <-- fixed property name
         onComplete: () => {
           gsap.to(overlayRef.current, {
             height: 0,
@@ -114,7 +114,7 @@ export default function MobileMenu() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="z-50 fixed top-4 right-4 p-2 bg-white rounded-none shadow-md"
+        className="z-50  p-2 bg-white rounded-none shadow-md"
       >
         {isOpen ? <X className="text-black h-8 w-8" /> : <Menu className="text-black h-8 w-8" />}
       </button>
@@ -122,7 +122,7 @@ export default function MobileMenu() {
       {/* Overlay */}
       <div
         ref={overlayRef}
-        className={`fixed top-0 left-0 w-full bg-[#f4f4f4] z-40 overflow-hidden ${
+        className={`fixed top-0 left-0 w-full h-screen bg-[#f4f4f4] z-40 overflow-hidden ${
           overlayVisible ? 'visible' : 'invisible'
         }`}
         style={{ height: '0vh' }}

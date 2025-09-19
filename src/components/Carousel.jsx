@@ -2,16 +2,17 @@ import React, { useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import { Clock } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Carousel({ products }) {
   const scrollRef = useRef(null);
   const headingRefs = useRef(null);
 
+  // Heading animation
   useEffect(() => {
     if (!headingRefs.current) return;
-      const lines = headingRefs.current.querySelectorAll("h2 span");
+    const lines = headingRefs.current.querySelectorAll("h2 span");
     gsap.fromTo(
       lines,
       { y: "100%", opacity: 0 },
@@ -28,9 +29,9 @@ export default function Carousel({ products }) {
         },
       }
     );
-  
-}, []);
+  }, []);
 
+  // Scroll buttons
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = scrollRef.current.clientWidth;
@@ -43,17 +44,17 @@ export default function Carousel({ products }) {
   return (
     <section className="w-full bg-gray-50 py-10">
       <div className="max-w-7xl mx-auto px-6">
-      
+        {/* Section Heading */}
         <h2
           ref={headingRefs}
           className="text-2xl font-semibold tracking-tight inline-block overflow-hidden"
         >
           <span className="inline-block translate-y-full">
-          Branding & Visual Design.{" "}
+            {products[0].track}.{<br />}
           </span>
           <br />
           <span className="font-normal text-gray-500 text-lg inline-block">
-            Essentials that pair perfectly with your favourite devices.
+            {products[0].description}
           </span>
         </h2>
 
@@ -74,10 +75,26 @@ export default function Carousel({ products }) {
               product.type === "intro" ? (
                 <div
                   key={product.id}
-                  className="min-w-[320px] max-w-[320px] flex-shrink-0 bg-white rounded-2xl shadow-sm p-6 flex flex-col justify-between"
+                  className="min-w-[320px] max-w-[320px] flex-shrink-0 bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col justify-between"
+                  onMouseEnter={(e) =>
+                    gsap.to(e.currentTarget, {
+                      y: -6,
+                      duration: 0.7,
+                      ease: "cubic-bezier(0.9, 0.1, 0.1, 0.9)",
+                    })
+                  }
+                  onMouseLeave={(e) =>
+                    gsap.to(e.currentTarget, {
+                      y: 0,
+                      duration: 0.7,
+                      ease: "cubic-bezier(0.9, 0.1, 0.1, 0.9)",
+                    })
+                  }
                 >
                   <div>
-                    <h3 className="text-xl font-semibold">{product.title}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {product.title}
+                    </h3>
                     <p className="text-gray-600 whitespace-pre-line mt-2 text-sm">
                       {product.subtitle}
                     </p>
@@ -96,20 +113,39 @@ export default function Carousel({ products }) {
               ) : (
                 <div
                   key={product.id}
-                  className="min-w-[280px] max-w-[280px] flex-shrink-0 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="min-w-[280px] max-w-[280px] flex-shrink-0 bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                  onMouseEnter={(e) =>
+                    gsap.to(e.currentTarget, {
+                      y: -6,
+                      duration: 0.7,
+                      ease: "cubic-bezier(0.9, 0.1, 0.1, 0.9)",
+                    })
+                  }
+                  onMouseLeave={(e) =>
+                    gsap.to(e.currentTarget, {
+                      y: 0,
+                      duration: 0.7,
+                      ease: "cubic-bezier(0.9, 0.1, 0.1, 0.9)",
+                    })
+                  }
                 >
                   <img
                     src={product.img}
                     alt={product.title}
-                    className="w-full rounded-t-2xl object-cover"
+                    className="w-full h-auto object-cover"
                   />
-                  <div className="p-4">
-                    <h3 className="text-base font-medium text-gray-900 leading-snug">
+                  <div className="p-5 flex flex-col gap-1.5">
+                    <h3 className="text-lg font-semibold text-gray-900 tracking-tight">
                       {product.title}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1">
-                      MRP {product.price} (Incl. of all taxes)
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {product.description}
                     </p>
+                    <p className="text-base font-medium text-gray-800 mt-2">
+                      {product.price}{" "}
+                      <span className="text-xs text-gray-500">(Incl. taxes)</span>
+                    </p>
+                    <p className="text-xs text-gray-500"><Clock className="inline p-0 m-0 h-3" /> {product.time}</p>
                   </div>
                 </div>
               )
