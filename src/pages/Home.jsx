@@ -7,6 +7,7 @@ import ScrollableVideo from "@/components/ScrollableVid";
 import Testimonials from "@/components/Testimonials";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
+import FAQsThree from "@/components/FaqItems";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,7 +63,7 @@ const Home = () => {
           the extra mile to create impactful digital solutions for Fintech,
           SaaS, Healthcare, E-commerce, Web, and Mobile products.
         </h1>
-        <span className="text-[#f93535] font-bold">Still why choose us...?</span>
+        <span className="text-[#f93535] text-5xl p-20 font-inter-tight-bold text-rough font-bold">Still why choose us...?</span>
       </div>
 
       <div>
@@ -74,6 +75,7 @@ const Home = () => {
       <div className="py-20">
         <ScrollableVideo />
       </div>
+      <FAQsThree />
       <Footer />
     </div>
   );

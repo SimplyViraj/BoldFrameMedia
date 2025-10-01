@@ -6,7 +6,7 @@ import Carousel from '@/components/Carousel';
 import { designer,videoeditor,threedmodeldesign,videographer } from '@/constants';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Prices from '@/components/Prices';
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
@@ -35,7 +35,7 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen text-black scroll-smooth">
+    <div className="min-h-screen text-black scroll-smooth">
       <Navbar dark={true} />
 
       <section className="mt-64 mb-8 px-8">
@@ -78,8 +78,8 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="w-full h-[10vh] md:h-[30vh] bg-white" />
-
+      {/* <div className="w-full h-[10vh] md:h-[30vh] bg-white" /> */}
+     <Prices />
       <div id="branding">
         <Carousel products={designer} />
       </div>

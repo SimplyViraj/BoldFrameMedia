@@ -3,6 +3,7 @@ export const navItems = [
   { name: 'About', href: '/about' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'Services', href: '/services' },
+  { name: 'Contact', href: '/contact' },
 ];
 export const previewImages = {
   Home: '/assets/stock.jpeg',
